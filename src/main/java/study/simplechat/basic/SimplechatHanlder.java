@@ -1,5 +1,6 @@
 package study.simplechat.basic;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
+@Profile("!stomp")
 @RequiredArgsConstructor
 @Component
 public class SimplechatHanlder extends TextWebSocketHandler {

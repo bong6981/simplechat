@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -11,6 +12,7 @@ import org.springframework.web.socket.WebSocketSession;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
+@Profile("!stomp")
 @Component
 public class ChatRoom {
     private final String USER_IN_MESSAGE = "새로운 사용자가 입장했습니다";

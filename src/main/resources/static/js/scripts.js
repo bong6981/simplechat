@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const chatForm = document.getElementById("chat-form");
     const chatInput = chatForm.querySelector("input");
 
-    const webSocket = new WebSocket("ws://localhost:8080/ws/simplechatHandler");
+    // const webSocket = new WebSocket("ws://localhost:8080/ws/simplechatHandler");
+    const webSocket = new SockJS("/ws/simplechatHandler");
 
     chatForm.addEventListener("submit", onChatSubmit);
 

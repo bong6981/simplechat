@@ -32,7 +32,7 @@ public class ChatRoomController {
             return "redirect:/users/nicknameForm";
         }
         model.addAttribute("rooms", chatRoomRepository.findAll());
-        return "/stomp/rooms";
+        return "stomp/rooms";
     }
 
     @GetMapping("/{roomId}")
@@ -43,6 +43,6 @@ public class ChatRoomController {
         ChatRoom room = chatRoomRepository.findById(roomId).orElseThrow(IllegalStateException::new);
         model.addAttribute("room", room);
         model.addAttribute("member", HttpSessionUtils.getNickname(session).get());
-        return "/stomp/room";
+        return "stomp/room";
     }
 }

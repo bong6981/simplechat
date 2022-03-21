@@ -17,7 +17,7 @@ public class UserController {
 
     @GetMapping("/nicknameForm")
     public String nicknameForm() {
-        return "/stomp/form";
+        return "stomp/form";
     }
 
     @PostMapping("/nickname")

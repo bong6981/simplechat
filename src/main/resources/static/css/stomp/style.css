@@ -1,0 +1,26 @@
+.wrap {
+    width: 900px;
+    margin: auto;
+}
+
+.message-received{
+    margin-left: 10px;
+    border-radius: 25px;
+    padding: 10px;
+    border: #78e08f solid 5px;
+}
+
+.message-sent{
+    margin-right: 10px;
+    border-radius: 25px;
+    border: #BA7CEA solid 5px;
+    padding: 10px;
+}
+
+.nickname-content {
+    width: 500px;
+    margin: auto;
+}
+
+
+

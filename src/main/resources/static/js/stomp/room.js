@@ -10,13 +10,12 @@ function connect() {
     const socket = new SockJS("/ws-stomp-chat");
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        stompClient.subscribe("/topic/chat/room/" + roomId, function (chat) {
-            const content = JSON.parse(chat.body);
-            const message = content.message;
-            if(content.writer === member) {
-                paintSentChat(message);
+        stompClient.subscribe("/topic/chat/room/" + roomId, function (frame) {
+            const chat = JSON.parse(frame.body);
+            if(chat.writer === member) {
+                paintSentChat(chat);
             } else {
-                paintReceivedChat(message);
+                paintReceivedChat(chat);
             }
         });
         stompClient.send("/app/chat/notice/join", {}, JSON.stringify({chatRoomId: roomId, writer: member}));
@@ -41,7 +40,7 @@ function paintChat(chat, outerDivClassName, innerDivClassName) {
 
     const innerDiv = document.createElement("div");
     innerDiv.className = innerDivClassName;
-    innerDiv.innerText = member + " : " + chat;
+    innerDiv.innerText = chat.writer + " : " + chat.message;
 
     outerDiv.appendChild(innerDiv);
     chatBox.appendChild(outerDiv);
